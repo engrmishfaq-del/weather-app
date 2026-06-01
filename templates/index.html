@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <style>
+        body {font-family: Arial; text-align: center; margin-top: 50px; background: #f0f8ff;}
+        .box {background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.1);}
+        input {padding: 10px; font-size: 16px;}
+        button {padding: 10px 20px; font-size: 16px; background: #007bff; color: white; border: none; border-radius: 5px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>🌤️ Weather App</h1>
+        <form method="POST">
+            <input type="text" name="city" placeholder="City ka naam likho" required>
+            <button type="submit">Add</button>
+        </form>
+        
+        {% if weather %}
+            {% if weather.error %}
+                <p style="color:red;">{{ weather.error }}</p>
+            {% else %}
+                <h2>{{ weather.city }}</h2>
+                <p style="font-size: 40px;">{{ weather.temp }}°C</p>
+                <p>{{ weather.desc }}</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
